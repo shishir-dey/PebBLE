@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PebBLE</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h1 style="font-size: 2rem;">PebBLE</h1>
+            <button class="connect-btn">Connect</button>
+            <div class="horizontal-row">
+                <h4>Service</h4>
+                <button id="addButton">+</button>
+
+            </div>
+            <p style="font-size: 0.8rem;">Automatic discovery of services is not supported in Web Bluetooth.</p>
+            <div class="horizontal-row">
+                <h4>Shortcuts</h4>
+                <button>+</button>
+            </div>
+        </aside>
+        <main class="content">
+            <section class=""">
+                <h2 style=" font-size: 2rem;">Device</h2>
+                <p style="font-size: 1rem;">MAC aa bb cc dd ee ff</p>
+                <p>RSSI: -50 dBm</p>
+                <p>Connection Interval: 30 ms</p>
+            </section>
+            <section class="card">
+                <h2>Service 1</h2>
+                <section class="sub-card">
+                    <h2>Unknown characteristics</h2>
+                    <div class="horizontal-row">
+                        <button class="btn">Read</button>
+                        <button class="btn">Write</button>
+                        <button class="btn">Notify</button>
+                    </div>
+                </section>
+            </section>
+        </main>
+    </div>
+</body>
+
+</html>
