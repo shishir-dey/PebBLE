@@ -41,6 +41,8 @@
                 optionalServices: services
             })
                 .then(device => {
+                    const dev = document.getElementById('device-name');
+                    dev.textContent = device.name;
                     return device.gatt.connect();
 
                 }).then(server => {
@@ -156,10 +158,12 @@
         </aside>
         <main class="content">
             <section class="">
-                <h2 style=" font-size: 2rem;">Device</h2>
-                <p id="mac" style="font-size: 1rem;">MAC: (not supported)</p>
-                <p id="rssi">RSSI: (not supported)</p>
-                <p id="conn-interval">Connection Interval: (not supported)</p>
+                <h2 id="device-name" style=" font-size: 2rem;">Device</h2>
+                <div class="horizontal-row">
+                    <p id="mac" style="font-size: 1rem;">MAC: (not supported)</p>
+                    <p id="rssi">RSSI: (not supported)</p>
+                    <p id="conn-interval">Connection Interval: (not supported)</p>
+                </div>
             </section>
             <div class="card-container" id="main">
             </div>
