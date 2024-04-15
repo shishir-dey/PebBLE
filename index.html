@@ -53,12 +53,29 @@
                     console.log('Getting GATT Services...');
                     return server.getPrimaryServices();
                 }).then(services => {
+
+                    let tempVar = 'placeholder';
                     services.forEach(service => {
                         service.getCharacteristics().then(characteristics => {
                             let charGUIObjs = [];
                             characteristics.forEach(characteristic => {
+                                tempVar = characteristic;
                                 console.log(characteristic.uuid);
                                 const charGUIObj = createCharGUIObject(characteristic.uuid, `hexInput-${characteristic.uuid}`, `asciiInput-${characteristic.uuid}`, `decimalInput-${characteristic.uuid}`, characteristic.properties.read, characteristic.properties.write, characteristic.properties.notify, `readBtn-${characteristic.uuid}`, `writeBtn-${characteristic.uuid}`, `notifyBtn-${characteristic.uuid}`);
+
+
+                                const readBtnId = `readBtn-${characteristic.uuid}`;
+                                const readBtn = charGUIObj.querySelector(`#${readBtnId}`);
+                                readBtn.addEventListener('click', function () {
+                                    characteristic.readValue().then(value => {
+                                        const hexInputId = `hexInput-${characteristic.uuid}`;
+                                        const hexInput = document.getElementById(hexInputId);
+                                        const parsedValue = new TextDecoder().decode(value);
+                                        hexInput.value = parsedValue;
+                                    });
+                                });
+
+
                                 charGUIObjs.push(charGUIObj);
                             });
                             const serviceGUIObj = createServiceGUIObject(service.uuid, charGUIObjs);
