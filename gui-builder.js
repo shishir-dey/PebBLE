@@ -16,6 +16,7 @@ function createCharGUIObject(uuid, hexId, asciiId, decimalId, readEnable, writeE
     // Create and add the hex input field
     var hexDiv = createHorizontalRow('Hex');
     var hexInput = createInputField('text', 'flex-input', hexId);
+    hexInput.id = 'hexInput-' + uuid;
     hexDiv.appendChild(hexInput);
     subCard.appendChild(hexDiv);
 
@@ -37,6 +38,8 @@ function createCharGUIObject(uuid, hexId, asciiId, decimalId, readEnable, writeE
     buttonDiv.style.justifyContent = 'center';
     var readBtn = createButton('Read', readBtnId);
     buttonDiv.appendChild(readBtn);
+    readBtn.id = 'readBtn-' + uuid;
+    // readBtn.addEventListener('click', bleReadCallback);
     if (readEnable) {
 
 
