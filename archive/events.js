@@ -1,3 +1,21 @@
+function fetchServicesFromLocalStorage() {
+
+    let count = localStorage.getItem('count') ? parseInt(localStorage.getItem('count')) : 0;
+    localStorage.setItem('count', count);
+
+    for (let i = 0; i < localStorage.length; i++) {
+        const key = localStorage.key(i);
+        if (key.startsWith('service-')) {
+            const label = document.createElement('label');
+            label.id = key.replace('service-', 'label-');
+            label.textContent = localStorage.getItem(key);
+            label.style.marginLeft = '10px';
+            label.style.marginRight = '10px';
+            document.querySelector('#service-list').appendChild(label);
+        }
+    }
+}
+
 document.addEventListener("DOMContentLoaded", function () {
     const browser = window.navigator.userAgent.toLowerCase();
     const isChrome = /chrome/.test(browser);
@@ -77,24 +95,6 @@ function onConnectRequest() {
         }
         )
         ;
-}
-
-function fetchServicesFromLocalStorage() {
-
-    let count = localStorage.getItem('count') ? parseInt(localStorage.getItem('count')) : 0;
-    localStorage.setItem('count', count);
-
-    for (let i = 0; i < localStorage.length; i++) {
-        const key = localStorage.key(i);
-        if (key.startsWith('service-')) {
-            const label = document.createElement('label');
-            label.id = key.replace('service-', 'label-');
-            label.textContent = localStorage.getItem(key);
-            label.style.marginLeft = '10px';
-            label.style.marginRight = '10px';
-            document.querySelector('#service-list').appendChild(label);
-        }
-    }
 }
 
 function onAddServiceButtonClick() {
