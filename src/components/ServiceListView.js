@@ -48,7 +48,7 @@ const ServiceListView = () => {
           +
         </button>
       </div>
-      <ul className="vertical-row" style={{padding: '0px'}}>
+      <ul className="vertical-row" style={{ padding: '0px' }}>
         {services.map((service, index) => (
           <li key={index}>
             <div style={{ display: 'flex', alignItems: 'center', padding: '5px 10px' }}>

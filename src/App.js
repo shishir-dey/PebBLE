@@ -40,7 +40,6 @@ function App() {
       const gattServices = await server.getPrimaryServices();
 
       const processedServices = gattServices.map(service => {
-        console.log("Service UUID= ", service.uuid);
         return {
           uuid: service.uuid,
           characteristics: service.getCharacteristics().then(characteristics => {
@@ -50,20 +49,25 @@ function App() {
               if (characteristic.properties.write) permissions.push('w');
               if (characteristic.properties.notify) permissions.push('n');
               const rwnString = permissions.join('');
+              console.log("Permission = ", rwnString);
 
-              console.log('Added Char Permissions:', rwnString);
-
-              // Add empty callback handlers with logs for now (replace with actual functionality)
-              console.log("Characteristic UUID = ", characteristic.uuid);
               return {
-                
                 uuid: characteristic.uuid,
                 permissionString: rwnString,
-                readBtnClick: () => console.log('Read Button Clicked'),
+                readBtnClick: () => {
+                  characteristic.readValue()
+                    .then(tempValue => {
+                      const decodedValue = new TextDecoder().decode(tempValue);
+                      console.log("Characteristic value:", decodedValue);
+                    })
+                    .catch(error => {
+                      console.error('Error reading characteristic value:', error);
+                    });
+                },
                 writeBtnClick: () => console.log('Write Button Clicked'),
                 notifyBtnClick: () => console.log('Notify Button Clicked'),
                 waitForNotificationClick: () => console.log('Wait for Notification Clicked'),
-                value: null,
+                value: "",
                 onValueChange: () => console.log('Value Changed'),
               };
             });
@@ -71,13 +75,13 @@ function App() {
         };
       });
 
-      const firstService = processedServices[0];
-const firstServiceCharacteristics = firstService.characteristics;
-
-setServices([firstService.uuid, firstService.characteristics]);
+      const firstServiceUUID = processedServices[0].uuid;
+      const firstServiceCharacteristics = await processedServices[0].characteristics;
+      console.log("Passed chars = ", firstServiceCharacteristics);
+      setServices([firstServiceUUID, firstServiceCharacteristics]);
     } catch (error) {
       console.error('Error connecting to device:', error);
-      setConnected(false); // Update connection state on error
+      setConnected(false);
     }
   };
 

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/global.css';
 
 const CharacteristicView = ({
   uuid,
@@ -43,7 +44,7 @@ const CharacteristicView = ({
           className="action-btn"
           id={`readBtn-${uuid}`}
           disabled={!hasReadPermission}
-          style={{ backgroundColor: hasReadPermission ? '#fff' : '#ccc' }}
+          style={{ backgroundColor: hasReadPermission ? '#2196F3' : '#ccc' }}
           onClick={readBtnClick}
         >
           Read
@@ -52,7 +53,7 @@ const CharacteristicView = ({
           className="action-btn"
           id={`writeBtn-${uuid}`}
           disabled={!hasWritePermission}
-          style={{ backgroundColor: hasWritePermission ? '#fff' : '#ccc' }}
+          style={{ backgroundColor: hasWritePermission ? '#2196F3' : '#ccc' }}
           onClick={writeBtnClick}
         >
           Write
@@ -61,7 +62,7 @@ const CharacteristicView = ({
           className="action-btn"
           id={`notifyBtn-${uuid}`}
           disabled={!hasNotifyPermission}
-          style={{ backgroundColor: hasNotifyPermission ? '#fff' : '#ccc' }}
+          style={{ backgroundColor: hasNotifyPermission ? '#2196F3' : '#ccc' }}
           onClick={notifyBtnClick}
         >
           Notify
@@ -70,7 +71,7 @@ const CharacteristicView = ({
           className="action-btn"
           id={`waitForNotificationBtn-${uuid}`}
           disabled={!hasNotifyPermission}
-          style={{ backgroundColor: hasNotifyPermission ? '#fff' : '#ccc' }}
+          style={{ backgroundColor: hasNotifyPermission ? '#2196F3' : '#ccc' }}
           onClick={waitForNotificationClick}
         >
           Wait for Notification

@@ -1,16 +1,15 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import CharacteristicView from './CharacteristicView'; // Assuming CharacteristicView is in a separate file
 
-const ServiceView = async ({ uuid, characteristics }) => {
-  // Assuming characteristics is an array of objects with relevant props
-
+const ServiceView = ({ uuid, characteristics }) => {
   if (!uuid || !uuid.length) {
     return <p>No services found.</p>;
   }
 
-  const resolvedCharacteristics = await characteristics;
-  console.log("Chars = ", resolvedCharacteristics);
-  const characteristicViews = resolvedCharacteristics?.map((characteristic) => (
+  console.log("Resolved chars = ", characteristics);
+
+  // Move characteristicViews creation inside a conditional rendering based on characteristics length
+  const characteristicViews = characteristics.length > 0 ? characteristics.map((characteristic) => (
     <CharacteristicView
       key={characteristic.uuid} // Assuming each characteristic object has a unique uuid prop
       uuid={characteristic.uuid}
@@ -19,13 +18,10 @@ const ServiceView = async ({ uuid, characteristics }) => {
       writeBtnClick={characteristic.writeBtnClick} // Assuming write button click handler exists
       notifyBtnClick={characteristic.notifyBtnClick} // Assuming notify button click handler exists
       waitForNotificationClick={characteristic.waitForNotificationClick} // Assuming wait button click handler exists
-      value={characteristic.value}  // Assuming value prop exists
+      value={characteristic.value}  // Assuming value prop exists
       onValueChange={characteristic.onValueChange} // Assuming value change handler exists
     />
-  ));
-
-  
-
+  )) : null;
 
   return (
     <section className="card">
