@@ -25,8 +25,8 @@ const CharacteristicView = ({
 
   return (
     <section className="sub-card">
-      <h4>Unknown characteristics</h4>
-      <p>UUID: {uuid}</p>
+      <h4 style={{ marginTop: '0.2rem', marginBottom: '0.2rem'}}>Unknown characteristics</h4>
+      <p style={{ marginTop: '0.2rem', marginBottom: '0.2rem'}}>UUID: {uuid}</p>
       <div className="horizontal-row-compressed">
         <select value={value} onChange={handleSelectionChange}>
           <option value="hex">Hex</option>
@@ -67,7 +67,7 @@ const CharacteristicView = ({
         >
           Notify
         </button>
-        <button
+        {/* <button
           className="action-btn"
           id={`waitForNotificationBtn-${uuid}`}
           disabled={!hasNotifyPermission}
@@ -75,7 +75,7 @@ const CharacteristicView = ({
           onClick={waitForNotificationClick}
         >
           Wait for Notification
-        </button>
+        </button> */}
       </div>
     </section>
   );
