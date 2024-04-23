@@ -25,8 +25,8 @@ const ServiceView = ({ uuid, characteristics }) => {
 
   return (
     <section className="card">
-      <h2>Unknown Service</h2>
-      <p>UUID: {uuid}</p>
+      <h2 style={{ marginTop: '0.2rem', marginBottom: '0.2rem'}}>Unknown Service</h2>
+      <p style={{ marginTop: '0.2rem'}}>UUID: {uuid}</p>
       {characteristicViews}
     </section>
   );
