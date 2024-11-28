@@ -10,7 +10,6 @@ ReactDOM.render(<App />,
     // document.getElementById('root').style.setProperty('margin', '0'),
     // document.getElementById('root').style.setProperty('padding', '0'),
     document.getElementById('root').style.setProperty('background-color', '#222'),
-
 );
 
 
