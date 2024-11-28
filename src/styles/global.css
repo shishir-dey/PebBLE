@@ -1,11 +1,12 @@
+:root {
+    font-size: 14px;
+}
+
 body {
-    /* display: flex;
-    flex-direction: column;
-    height: 100vh; */
     margin: 0;
     padding: 0;
-    /* background-color: #222; */
-    font-family: "Inter", "Roboto", "Arial", sans-serif;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    font-size: 1rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -69,6 +70,7 @@ body {
     margin-bottom: 1rem;
     color: #333;
     text-shadow: 0 1px 0 rgba(0, 0, 0, 0.1);
+    font-size: 1rem;
 }
 
 .sub-card {
@@ -78,6 +80,7 @@ body {
     padding: 1rem;
     margin-bottom: 1rem;
     color: #555;
+    font-size: 1rem;
 }
 
 .horizontal-row {
